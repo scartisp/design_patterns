@@ -19,7 +19,7 @@ public class SchoolDriver {
         StudentGovPoll schoolPolls = new StudentGovPoll("Fun Collegiate");
         new TallyDisplay(schoolPolls);
         new PercentageDisplay(schoolPolls);
-
+        
         System.out.println("Welcome to " + schoolPolls.getSchool() + "'s Student Gov Poll");
 
         schoolPolls.addCandidate("Jim", "Roberts");
@@ -35,6 +35,7 @@ public class SchoolDriver {
             int c = choices.get(rand.nextInt(choices.size()));
             schoolPolls.enterVotes(a, b, c);
         }
+
     }
 
     public static void main(String[] args) {
