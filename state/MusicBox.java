@@ -110,5 +110,6 @@ public class MusicBox {
             System.out.println(lyrics.get(i));
         }
         System.out.println();
+        LanguageSongs.sleep();
     }
 }
