@@ -16,7 +16,7 @@ public class EnglishState extends State {
      * 
      * @param box takes in a MusicBox item to be initialized
      */
-    EnglishState(MusicBox box) {
+    public EnglishState(MusicBox box) {
         super(box, TWINKLE_FILE_NAME, HAPPY_FILE_NAME);
     }
 
