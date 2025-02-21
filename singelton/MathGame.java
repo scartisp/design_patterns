@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @author Simion Cartis
  */
 public class MathGame {
-    public static int NUM_QUESTIONS = 5;
+    public static final int NUM_QUESTIONS = 5;
     private static MathGame mathGame;
     private ArrayList<Question> questions;
 
