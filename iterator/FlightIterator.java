@@ -1,9 +1,9 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 
-public class FlightIterator {
+public class FlightIterator implements Iterator<Flight> {
     private ArrayList<Flight> flights;
-    private int position;
+    private int position = 0;
     private Airport from;
     private Airport to;
 
@@ -14,21 +14,31 @@ public class FlightIterator {
     }
 
     public boolean hasNext() {
-        if (flights.get(position).sameLoc(from, to)) {
-            return true;
+        for (int i = position; i < flights.size(); ++i) {
+            if (flights.get(i).sameLoc(from, to)) {
+                position = i;
+                return true;
+            }
         }
         return false;
+
+        // if (flights.get(position).sameLoc(from, to) && position < flights.size()
+        // || flights.get(position) != null) {
+        // return true;
+        // }
+        // return false;
     }
 
     public Flight next() {
         Flight flight = flights.get(position);
-        for (int i = 0; i < flights.size(); ++i) {
-            if (flights.get(i).sameLoc(from, to)) {
-                position = position+i;
-                break;
-            }
-        }
+        ++position; 
         return flight;
     }
-    //
+    // NO FUCKING CLUE BRO, for any of these methods
+
+    // private void loop() {
+    //     while (!hasNext()) {
+    //         ++position;
+    //     }
+    // }
 }

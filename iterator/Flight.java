@@ -27,19 +27,40 @@ public class Flight {
     }
 
     public boolean sameLoc(Airport from, Airport to) {
-        if (this.from == this.to) {
+        if (this.from == from && this.to == to) {
             return true;
         }
         return false;
     }
 
     public String toString() {
-        int totalHour = this.endTime.getHour() - this.startTime.getHour();
-        int totalMin = this.endTime.getMinute() - this.startTime.getMinute();
-        String TransOutput = (numTransitions == 1) ? this.numTransitions + " Stopovers"
+        int totalHour = getTotalHour();
+        int totalMin = getTotalMin();
+        String TransOutput = (numTransitions == 1) ? this.numTransitions + " Stopover"
                 : (numTransitions == 0) ? "Direct Flight" : this.numTransitions + " Transfers";
 
-        return this.from + " " + this.to + " " + this.startTime + " - " + this.endTime + " ("
+        return this.from + " to " + this.to + " " + this.startTime + " - " + this.endTime + " ("
                 + totalHour + "h " + totalMin + "m) " + TransOutput;
+    }
+
+    private int getTotalHour() {
+        if (compareMin()) {
+            return this.endTime.getHour() - (this.startTime.getHour() + 1);
+        }
+        return this.endTime.getHour() - this.startTime.getHour();
+    }
+
+    private int getTotalMin() {
+        if (compareMin()) {
+            return (this.endTime.getMinute() - this.startTime.getMinute()) + 60;
+        }
+        return this.endTime.getMinute() - this.startTime.getMinute();
+    }
+
+    private boolean compareMin() {
+        if (this.endTime.getMinute() < this.startTime.getMinute()) {
+            return true;
+        }
+        return false;
     }
 }
